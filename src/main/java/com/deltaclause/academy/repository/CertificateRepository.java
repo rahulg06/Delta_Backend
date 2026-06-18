@@ -1,0 +1,14 @@
+package com.deltaclause.academy.repository;
+
+import com.deltaclause.academy.domain.Certificate;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface CertificateRepository extends JpaRepository<Certificate, String> {
+    Optional<Certificate> findByIdIgnoreCase(String id);
+    List<Certificate> findByStudentNameIgnoreCaseContaining(String studentName);
+}
