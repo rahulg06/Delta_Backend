@@ -57,8 +57,13 @@ public class WebSecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOriginPatterns(Collections.singletonList("*")); // Support all development and pre-prod origins
+//        configuration.setAllowedOriginPatterns(Collections.singletonList("*")); // Support all development and pre-prod origins
+        configuration.setAllowedOrigins(Arrays.asList(
+                "http://localhost:5173",
+                "https://deltafrontendnew.vercel.app"
+        ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
+
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Cache-Control", "X-Requested-With"));
         configuration.setExposedHeaders(Collections.singletonList("Authorization"));
         configuration.setAllowCredentials(true);
